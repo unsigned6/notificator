@@ -1,0 +1,33 @@
+{
+  "name": "notificator",
+  "version": "1.0.0",
+  "description": "Notification module with abstract PubSub and RabbitMQ driver",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "jest --testPathPattern=tests/* --coverageDirectory=coverage/ --coverage --runInBand --testTimeout=35000 --forceExit  --silent",
+    "notify": "node examples/notificator/notify.js",
+    "receive": "node examples/notificator/receive.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unsigned6/notificator.git"
+  },
+  "keywords": [
+    "rabbitmq",
+    "notificator",
+    "pubsub"
+  ],
+  "author": "Yurii Vlasiuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unsigned6/notificator/issues"
+  },
+  "homepage": "https://github.com/unsigned6/notificator#readme",
+  "dependencies": {
+    "amqplib": "^0.6.0",
+    "jest": "^26.1.0"
+  }
+}
