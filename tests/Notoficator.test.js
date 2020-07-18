@@ -1,7 +1,7 @@
-const notificator = require('../lib/notificatorSingletone');
 const { pubsub }     = require('../etc/config');
+const Notificator    = require('../lib/Notificator');
+const notificator    = require('../lib/notificatorSingletone');
 const AbstractPubSub = require('../lib/AbstractPubSub');
-const Notificator    = require('../lib/Norificator');
 const RabbitDriver   = require('../lib/drivers/Rabbit');
 
 describe('Notificator tests', () => {
@@ -15,8 +15,9 @@ describe('Notificator tests', () => {
         expect(result.test).toBe(1);
     });
 
-    test('positive: can notify/recieve messages between different nodes', async () => {
-        const { notificatorOne, notificatorTwo } = createNotifiactors();
+    test('positive: can notify/receive messages between different nodes', async () => {
+        const notificatorOne = createNotificator();
+        const notificatorTwo = createNotificator();
 
         await notificatorOne.init();
         await notificatorTwo.init();
@@ -30,23 +31,18 @@ describe('Notificator tests', () => {
     });
 });
 
-function createNotifiactors() {
+function createNotificator() {
     const rabbitDriver = new RabbitDriver({
         endpoint : pubsub.endpoint,
         login    : pubsub.login,
         password : pubsub.password
     });
-    const notificatorOne = new Notificator({
+
+    const notificator = new Notificator({
         pubsub : new AbstractPubSub({
             driver : rabbitDriver
         })
     });
 
-    const notificatorTwo = new Notificator({
-        pubsub : new AbstractPubSub({
-            driver : rabbitDriver
-        })
-    });
-
-    return { notificatorOne, notificatorTwo };
+    return notificator;
 }
