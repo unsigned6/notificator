@@ -1,6 +1,6 @@
 const { pubsub }     = require('../etc/config');
 const Notificator    = require('../lib/Notificator');
-const notificator    = require('../lib/notificatorSingletone');
+const notificator    = require('../lib/notificatorSingleton');
 const AbstractPubSub = require('../lib/AbstractPubSub');
 const RabbitDriver   = require('../lib/drivers/Rabbit');
 

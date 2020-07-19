@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const notificator = require('../../lib/notificatorSingletone');
+const notificator = require('../../lib/notificatorSingleton');
 
 async function main() {
     let iterator = 0;
