@@ -1,8 +1,8 @@
-const { pubsub }     = require('../etc/config');
-const Notificator    = require('../lib/Notificator');
-const notificator    = require('../lib/notificatorSingleton');
-const AbstractPubSub = require('../lib/AbstractPubSub');
-const RabbitDriver   = require('../lib/drivers/Rabbit');
+const { pubsub }   = require('../etc/config');
+const Notificator  = require('../lib/Notificator');
+const notificator  = require('../lib/notificatorSingleton');
+const PubSub       = require('../lib/PubSub');
+const RabbitDriver = require('../lib/drivers/Rabbit');
 
 describe('Notificator tests', () => {
     test('positive: can notify/recieve messages', async () => {
@@ -39,7 +39,7 @@ function createNotificator() {
     });
 
     const notificator = new Notificator({
-        pubsub : new AbstractPubSub({
+        pubsub : new PubSub({
             driver : rabbitDriver
         })
     });
