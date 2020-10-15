@@ -32,7 +32,7 @@ describe("Notificator with Redis driver tests", () => {
 });
 
 function createNotificator() {
-  const rabbitDriver = new RedisDriver({
+  const redisDriver = new RedisDriver({
     port: redisPubsub.port,
     host: redisPubsub.host,
     database: redisPubsub.database,
@@ -40,7 +40,7 @@ function createNotificator() {
 
   const notificator = new Notificator({
     pubsub: new PubSub({
-      driver: rabbitDriver,
+      driver: redisDriver,
     }),
   });
 
