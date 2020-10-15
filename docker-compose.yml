@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 services:
   rabbitmq:
     image: "rabbitmq:3-management"
@@ -17,3 +17,21 @@ services:
       NAME: "rabbitmq"
     volumes:
       - "./etc/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json"
+
+  redis:
+    image: "bitnami/redis:5.0"
+    container_name: "redis"
+    hostname: "redis"
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data/redis:/bitnami/redis/data"
+
+  rebrow:
+    image: "marian/rebrow"
+    ports:
+      - "8082:5001"

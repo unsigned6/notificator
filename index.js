@@ -1,3 +1,3 @@
-const notificator = require('./notificatorSingletone');
+const notificator = require("./notificatorSingletonRabbit");
 
 module.exports = notificator;

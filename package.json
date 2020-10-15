@@ -8,8 +8,12 @@
   },
   "scripts": {
     "test": "jest --testPathPattern=tests/* --coverageDirectory=coverage/ --coverage --runInBand --testTimeout=35000 --forceExit  --silent",
-    "notify": "node examples/notificator/notify.js",
-    "receive": "node examples/notificator/receive.js"
+    "notify": "npm run notify-rabbit",
+    "receive": "npm run receive-rabbit",
+    "notify-rabbit": "node examples/notificator/notifyRabbit.js",
+    "receive-rabbit": "node examples/notificator/receiveRabbit.js",
+    "notify-redis": "node examples/notificator/notifyRedis.js",
+    "receive-redis": "node examples/notificator/receiveRedis.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +32,7 @@
   "homepage": "https://github.com/unsigned6/notificator#readme",
   "dependencies": {
     "amqplib": "^0.6.0",
-    "jest": "^26.1.0"
+    "jest": "^26.1.0",
+    "redis": "^3.0.2"
   }
 }
